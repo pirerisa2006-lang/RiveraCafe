@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% block title %}Redes sociales | La Caffettiera{% endblock %}
+{% block content %}
+    <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-innerv text-center rounded">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Síguenos</span>
+                <span class="section-heading-lower">Redes sociales</span>
+              </h2>
+              {% for r in redes %}
+              <p><a href="{{ r.link }}" target="_blank" rel="noopener" class="link">{{ r.name }}</a></p>
+              {% empty %}
+              <p>No hay redes sociales registradas.</p>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
