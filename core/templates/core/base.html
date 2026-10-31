@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+      {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Fuentes -->
+    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link href="{% static 'core/css/business-casual.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      <span class="site-heading-upper text-primary mb-3">L'autentico caffè d'italia</span>
+      <span class="site-heading-lower">La Caffettiera</span>
+    </h1>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'index' %}">La Caffettiera</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-lg-4{% if request.resolver_match.url_name == 'index' %} active{% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'index' %}">Inicio</a>
+            </li>
+            <li class="nav-item px-lg-4{% if request.resolver_match.url_name == 'about' %} active{% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'about' %}">Historia</a>
+            </li>
+            <li class="nav-item px-lg-4{% if request.resolver_match.url_name == 'services' %} active{% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'services' %}">Servicios</a>
+            </li>
+            <li class="nav-item px-lg-4{% if request.resolver_match.url_name == 'store' %} active{% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'store' %}">Visítanos</a>
+            </li>
+            <li class="nav-item px-lg-4{% if request.resolver_match.url_name == 'contact' %} active{% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'contact' %}">Contacto</a>
+            </li>
+            <li class="nav-item px-lg-4{% if request.resolver_match.url_name == 'blog' %} active{% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'blog' %}">Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <!-- Pié de página -->
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">
+          {% for r in redes %}
+          <a href="{{ r.link }}" class="link" target="_blank" rel="noopener" title="{{ r.name }}">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa {% if 'facebook' in r.name|lower %}fa-facebook{% elif 'instagram' in r.name|lower %}fa-instagram{% elif 'twitter' in r.name|lower or r.name|lower == 'x' %}fa-twitter{% elif 'youtube' in r.name|lower %}fa-youtube-play{% elif 'linkedin' in r.name|lower %}fa-linkedin{% elif 'whatsapp' in r.name|lower %}fa-whatsapp{% elif 'tiktok' in r.name|lower %}fa-music{% else %}fa-globe{% endif %} fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
+          {% endfor %}
+        </p>
+        <p class="m-0 mbt">
+        	<a href="{% url 'privacy' %}" class="link">Política de privacidad</a> ·
+        	<a href="{% url 'privacy' %}" class="link">Aviso legal</a> ·
+        	<a href="{% url 'privacy' %}" class="link">Cookies</a>
+		</p>
+        <p class="m-0 mbt1">&copy; La Caffettiera 2026</p>
+      </div>
+	</footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="{{ whatsapp_url }}" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+      <i class="fa fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+
+</html>
