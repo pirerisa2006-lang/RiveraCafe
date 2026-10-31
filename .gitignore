@@ -1,6 +1,17 @@
+# Entorno virtual
 .venv/
 venv/
-__pycache__/
-*.py[cod]
+env/
+
+# IDE
 .idea/
 .vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Archivos generados
+staticfiles/
+Thumbs.db
+.DS_Store
