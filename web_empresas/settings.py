@@ -145,7 +145,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'live.smtp.mailtrap.io'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'api'
-EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_PASSWORD', '')
+EMAIL_HOST_PASSWORD = '12f13023d87ff4a9656df20916d8dd71'
 EMAIL_USE_TLS = True
 
 DEFAULT_FROM_EMAIL = 'La Caffettiera <web@demomailtrap.co>'
