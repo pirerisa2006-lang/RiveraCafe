@@ -158,5 +158,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'pirerisa2006@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD', '')
 DEFAULT_FROM_EMAIL = 'La Cafetería <pirerisa2006@gmail.com>'
+CONTACT_RECIPIENT = 'pirerisa2006@gmail.com'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
