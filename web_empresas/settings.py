@@ -138,10 +138,31 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+# Configuración de correo con Mailtrap SMTP
+MAILTRAP_USER = os.environ.get('MAILTRAP_USER', 'api')
+MAILTRAP_PASSWORD = os.environ.get('MAILTRAP_PASSWORD', '<YOUR_API_TOKEN>')
+
+if MAILTRAP_USER and MAILTRAP_PASSWORD:
+    MAILERS = {
+        'default': {
+            'BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
+            'OPTIONS': {
+                'host': 'live.smtp.mailtrap.io',
+                'port': 587,
+                'username': MAILTRAP_USER,
+                'password': MAILTRAP_PASSWORD,
+                'use_tls': True,
+            },
+        }
+    }
+else:
+    MAILERS = {
+        'default': {
+            'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+        }
+    }
+
+DEFAULT_FROM_EMAIL = 'La Caffettiera <web@lacaffettiera.com>'
+CONTACT_RECIPIENT = 'info@lacaffettiera.com'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
