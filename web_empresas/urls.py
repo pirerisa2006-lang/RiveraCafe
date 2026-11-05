@@ -9,13 +9,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.index, name="index"),
     path("about/", views.about, name="about"),
-    path("contact/", views.contact, name="contact"),
     path("store/", views.store, name="store"),
     path("privacy/", views.privacy, name="privacy"),
     # Cada app tiene su propio urls.py y se enlaza con include()
     path("blog/", include("blog.urls")),
     path("services/", include("services.urls")),
     path("social/", include("social.urls")),
+    path("contact/", include("contact.urls")),
 ]
 
 if settings.DEBUG:
