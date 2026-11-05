@@ -141,14 +141,22 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
 # Configuración de correo con Mailtrap SMTP
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'live.smtp.mailtrap.io'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'api'
-EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_PASSWORD', '')
-EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'live.smtp.mailtrap.io'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'api'
+# EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_PASSWORD', '')
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'La Caffettiera <web@demomailtrap.co>'
+# CONTACT_RECIPIENT = 'pirerisa2006@gmail.com'
 
-DEFAULT_FROM_EMAIL = 'La Caffettiera <web@demomailtrap.co>'
-CONTACT_RECIPIENT = 'pirerisa2006@gmail.com'
+# Configuración para enviar correos usando Gmail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'pirerisa2006@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD', '')
+DEFAULT_FROM_EMAIL = 'La Cafetería <tu_correo@gmail.com>'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
